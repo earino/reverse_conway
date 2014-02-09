@@ -2,7 +2,7 @@ library(randomForest)
 library(parallel)
 train <- read.csv("~/play/conway/train.csv")
 
-ntrees <- 36
+ntrees <- 288
 x <- train[,2:402]
 nproc <- detectCores() - 2
 for(i in 403:802) {
