@@ -3,16 +3,16 @@ library(parallel)
 train <- read.csv("~/play/conway/train.csv")
 
 ntrees <- 288
-x <- train[,2:402]
+x <- train[,c(2,403:802)]
 nproc <- detectCores() - 2
-for(i in 403:802) {
+for(i in 3:402) {
   print(paste("loop", i))
   ptm <- proc.time()
 
   y <- as.factor(train[,i])
 
   mds <- mclapply(rep(ntrees/nproc,nproc),
-                    function(ntree) randomForest(x,y,ntree=ntree,sampsize=c(50,50)),
+                    function(ntree) randomForest(x,y,ntree=ntree),
                     mc.cores = nproc)
 
   print(mds)
