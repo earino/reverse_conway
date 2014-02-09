@@ -15,6 +15,8 @@ for(i in 403:802) {
                     function(ntree) randomForest(x,y,ntree=ntree),
                     mc.cores = nproc)
 
+  print(mds)
+
   md <- do.call("combine", mds)
 
   outfile <- paste0("rf.stop.",i,".RData")
