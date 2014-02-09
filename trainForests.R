@@ -12,7 +12,7 @@ for(i in 403:802) {
   y <- as.factor(train[,i])
 
   mds <- mclapply(rep(ntrees/nproc,nproc),
-                    function(ntree) randomForest(x,y,ntree=ntree),
+                    function(ntree) randomForest(x,y,ntree=ntree,sampsize=c(50,50)),
                     mc.cores = nproc)
 
   print(mds)
