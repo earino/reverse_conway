@@ -81,15 +81,16 @@ while(! file.exists(infile)) {
   print(paste("waiting for ", infile))
   Sys.sleep(5)
 }
-Sys.sleep(5)
 load(infile)
 
 x <- test[,c("delta", "$all_vals")]
 y <- predict(md, newdata=x)
 
 retval[[paste0("$key")]] <- y
-write.csv(retval, file="submission.csv", row.names=FALSE)
 print(proc.time() - ptm)
 EOT
 }
+print <<EOT;
+write.csv(retval, file="submission.csv", row.names=FALSE)
+EOT
 
